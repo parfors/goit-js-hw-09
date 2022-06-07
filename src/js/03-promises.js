@@ -4,15 +4,16 @@ const refs = {
   form: document.querySelector('.form'),
 };
 refs.form.addEventListener('submit', submitHeandler);
+let position = 1;
 
 function submitHeandler(e) {
   e.preventDefault();
   const { delay, step, amount } = e.target.elements;
   
   setTimeout(() => {
-    for (let i = 1; i <= amount.value; i += 1) {
+    for (let i = 0; i < amount.value; i += 1) {
       let promiseDelay = +delay.value + +step.value * i;
-    createPromise(i, promiseDelay).then(({ position, delay }) => {
+    createPromise(position, promiseDelay).then(({ position, delay }) => {
     Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
   })
   .catch(({ position, delay }) => {
@@ -36,7 +37,7 @@ function createPromise(position, delay) {
     }
   }, delay);
 })
-
+  position += 1;
   return promise
 }
 
