@@ -12,7 +12,7 @@ const refs = {
 refs.startBtn.classList.add('startBtn');
 refs.startBtn.setAttribute('disabled', true);
 
-let DATE_NOW = null;
+let DATE_NOW = Date.now();
 let selectedDate = null;
 let isTimerOn = null;
 
